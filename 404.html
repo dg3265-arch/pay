@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title></title>
+
 <style>
   body {
     font-family: -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -70,18 +71,14 @@ function getParam(name) {
 }
 
 var pa = getParam('pa') || '6395305705@axl';
-var pn = getParam('pn') || 'Gola Agro Industries';
 
 var pathAmount = window.location.pathname.replace(/^\/+|\/+$/g, '');
 var am = getParam('am') || pathAmount || '';
 
-var cu = getParam('cu') || 'INR';
-
 var upiLink =
   "upi://pay?pa=" + encodeURIComponent(pa) +
-  "&pn=" + encodeURIComponent(pn) +
   (am ? "&am=" + encodeURIComponent(am) : "") +
-  "&cu=" + encodeURIComponent(cu);
+  "&cu=INR";
 
 document.getElementById('manualLink').href = upiLink;
 
