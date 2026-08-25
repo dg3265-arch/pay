@@ -77,15 +77,24 @@ function getParam(name) {
 }
 
 var pa = getParam('pa') || '6395305705@axl';
+var pn = getParam('pn') || 'Gola Agro Industries';
 
 var pathAmount = window.location.pathname.replace(/^\/+|\/+$/g, '');
 var am = getParam('am') || pathAmount || '';
 
+if (am) {
+  am = parseFloat(am).toFixed(2);
+}
+
+var tn = 'Payment to Gola Agro Industries';
+
 var upiLink =
   "upi://pay" +
   "?pa=" + encodeURIComponent(pa) +
+  "&pn=" + encodeURIComponent(pn) +
   "&am=" + encodeURIComponent(am) +
-  "&cu=INR";
+  "&cu=INR" +
+  "&tn=" + encodeURIComponent(tn);
 
 document.getElementById('amt').textContent =
   am ? "₹" + am : "₹0";
