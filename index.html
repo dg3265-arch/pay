@@ -34,9 +34,15 @@
     border-radius: 8px;
     font-weight: bold;
   }
-  .amt { font-size: 22px; font-weight: bold; color: #004990; margin: 10px 0; }
+  .amt {
+    font-size: 22px;
+    font-weight: bold;
+    color: #004990;
+    margin: 10px 0;
+  }
 </style>
 </head>
+
 <body>
   <div class="card">
     <h2>Gola Agro Industries</h2>
@@ -53,7 +59,10 @@
 
   var pa = getParam('pa') || '6395305705@axl';
   var pn = getParam('pn') || 'Gola Agro Industries';
-  var am = getParam('am') || '';
+
+  var pathAmount = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  var am = getParam('am') || pathAmount || '';
+
   var cu = getParam('cu') || 'INR';
 
   var upiLink = "upi://pay?pa=" + encodeURIComponent(pa) +
@@ -62,6 +71,7 @@
                 "&cu=" + encodeURIComponent(cu);
 
   document.getElementById('manualLink').href = upiLink;
+
   if (am) {
     document.getElementById('amt').textContent = "₹" + am;
   }
